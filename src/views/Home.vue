@@ -3,12 +3,17 @@
     <Header :username="name" v-model="InputData.condition">
       <template v-slot:message>
         <p>Let's enjoy programming!</p>
-      </template> </Header
-    >ï
+      </template>
+    </Header>
     <Body @add="add1"></Body>
     <Body @add="add2"></Body>
     <p>total : {{ totalcount }}</p>
     <p>condition : {{ InputData.condition }}</p>
+    <button @click="componentName = 'Header'">Header</button>
+    <button @click="componentName = 'Body'">Body</button>
+    <keep-alive>
+      <component :is="componentName"></component>
+    </keep-alive>
   </div>
 </template>
 
@@ -36,6 +41,7 @@ export default {
       InputData: {
         condition: "",
       },
+      componentName: "Header",
     };
   },
   methods: {
