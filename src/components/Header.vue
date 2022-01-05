@@ -2,6 +2,7 @@
   <div>
     <h1>{{ title }}</h1>
     <p>{{ text }}</p>
+    <slot name="message"></slot>
     <p>Welcome! {{ username }}!</p>
   </div>
 </template>

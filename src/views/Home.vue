@@ -1,11 +1,21 @@
 <template>
   <div>
-    <Header :username="name"></Header>
+    <Header :username="name">
+      <template v-slot:message>
+        <p>Let's enjoy programming!</p>
+      </template>
+    </Header>
     <Body @add="add1"></Body>
     <Body @add="add2"></Body>
     <p>total : {{ totalcount }}</p>
   </div>
 </template>
+
+<style scoped>
+p {
+  color: green;
+}
+</style>
 
 <script>
 import Header from "../components/Header.vue";
