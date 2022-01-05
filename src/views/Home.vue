@@ -1,13 +1,14 @@
 <template>
   <div>
-    <Header :username="name">
+    <Header :username="name" v-model="InputData.condition">
       <template v-slot:message>
         <p>Let's enjoy programming!</p>
-      </template>
-    </Header>
+      </template> </Header
+    >ï
     <Body @add="add1"></Body>
     <Body @add="add2"></Body>
     <p>total : {{ totalcount }}</p>
+    <p>condition : {{ InputData.condition }}</p>
   </div>
 </template>
 
@@ -32,6 +33,9 @@ export default {
       count1: 0,
       count2: 0,
       totalcount: 0,
+      InputData: {
+        condition: "",
+      },
     };
   },
   methods: {
