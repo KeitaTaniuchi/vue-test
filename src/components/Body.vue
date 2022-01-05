@@ -2,6 +2,7 @@
   <div>
     <h2>{{ title }}</h2>
     <p>{{ text }}</p>
+    <p><button @click="increment">+1</button> {{ count }}</p>
   </div>
 </template>
 
@@ -11,7 +12,14 @@ export default {
     return {
       title: "Body",
       text: "Have a good day!",
+      count: 0,
     };
+  },
+  methods: {
+    increment() {
+      this.count += 1;
+      this.$emit("add", this.count);
+    },
   },
 };
 </script>
