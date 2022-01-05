@@ -2,6 +2,7 @@
   <div>
     <h1>{{ title }}</h1>
     <p>{{ text }}</p>
+    <p>Welcome! {{ username }}!</p>
   </div>
 </template>
 
@@ -12,6 +13,9 @@ export default {
       title: "Header",
       text: "Hello Vue.js!",
     };
+  },
+  props: {
+    username: String,
   },
 };
 </script>

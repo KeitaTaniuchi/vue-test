@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header></Header>
+    <Header :username='name'></Header>
     <Body></Body>
     <Body></Body>
   </div>
@@ -14,6 +14,11 @@ export default {
   components: {
     Header,
     Body
+  },
+  data(){
+    return{
+      name: "keita"
+    }
   }
 }
 </script>
