@@ -1,6 +1,11 @@
 <template>
   <div>
-    <p>{{ `鉛筆とノートの合計金額は、${totalPrice}円` }}</p>
+    <input v-model="firstName" placeholder="firstName" />
+    <input v-model="lastName" placeholder="lastName" />
+    <p>firstName: {{ firstName }}</p>
+    <p>lastName: {{ lastName }}</p>
+    <p>fullName: {{ fullName }}</p>
+    <p>now: {{ now }}</p>
   </div>
 </template>
 
@@ -8,25 +13,27 @@
 export default {
   data() {
     return {
-      items: [
-        {
-          name: "鉛筆",
-          price: 300,
-          quantity: 1,
-        },
-        {
-          name: "ノート",
-          price: 400,
-          quantity: 2,
-        },
-      ],
+      firstName: "",
+      lastName: "",
+      fullName: "",
+      now: "",
     };
   },
-  computed: {
-    totalPrice: function () {
-      return this.items.reduce((sum, item) => {
-        return sum + item.price * item.quantity;
-      }, 0);
+  watch: {
+    // firstName/lastName/now: 監視対象のプロパティ名
+    // newValue: 更新後のプロパティの値
+    // oldValue: 更新前のプロパティの値
+    firstName: function (newValue, oldValue) {
+      console.log(newValue, oldValue);
+      this.fullName = newValue + " " + this.lastName;
+    },
+    lastName: function (newValue, oldValue) {
+      console.log(newValue, oldValue);
+      this.fullName = this.firstName + " " + newValue;
+    },
+    // 監視しているが、値に変化がないので変更されることはない
+    now: function () {
+      return Date.now();
     },
   },
 };
