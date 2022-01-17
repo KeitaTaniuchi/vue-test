@@ -1,10 +1,6 @@
 <template>
-  <div class="about">
-    <p>{{ text }}</p>
-    <p>{{ showMsg() }}</p>
-    <p>{{ count }}</p>
-    <button v-on:click="sayHello">挨拶</button>
-    <button @click="countUp(10)">10増やす</button>
+  <div>
+    <p>{{ `鉛筆とノートの合計金額は、${totalPrice}円` }}</p>
   </div>
 </template>
 
@@ -12,22 +8,25 @@
 export default {
   data() {
     return {
-      text: "",
-      count: 0,
+      items: [
+        {
+          name: "鉛筆",
+          price: 300,
+          quantity: 1,
+        },
+        {
+          name: "ノート",
+          price: 400,
+          quantity: 2,
+        },
+      ],
     };
   },
-  methods: {
-    // メソッド名: function() {
-    //      処理
-    // },
-    sayHello: function () {
-      this.text = "Hello";
-    },
-    showMsg: function () {
-      return "ボタンを押してね";
-    },
-    countUp: function (value) {
-      this.count += value;
+  computed: {
+    totalPrice: function () {
+      return this.items.reduce((sum, item) => {
+        return sum + item.price * item.quantity;
+      }, 0);
     },
   },
 };
