@@ -1,34 +1,34 @@
-
 <template>
   <div class="about">
-    <p>{{ number }}</p>
-    <!-- 123 -->
     <p>{{ text }}</p>
-    <!-- Hello -->
-    <p>{{ bool }}</p>
-    <!-- true -->
-    <p>{{ arr }}</p>
-    <!-- [ "a", "b", "c" ] -->
-    <p>{{ arr[0] }}</p>
-    <!-- a -->
-    <p>{{ myFruits }}</p>
-    <!-- [ { "name": "オレンジ", "price": 100 }, { "name": "レモン", "price": 200 }] -->
+    <p>{{ showMsg() }}</p>
+    <p>{{ count }}</p>
+    <button v-on:click="sayHello">挨拶</button>
+    <button @click="countUp(10)">10増やす</button>
   </div>
 </template>
+
 <script>
 export default {
   data() {
     return {
-      number: 123,
-      text: "Hello",
-      bool: true,
-      arr: ["a", "b", "c"],
-      myFruits: [
-        { name: "オレンジ", price: 100 },
-        { name: "レモン", price: 200 },
-        { name: "バナナ", price: 300 },
-      ],
+      text: "",
+      count: 0,
     };
+  },
+  methods: {
+    // メソッド名: function() {
+    //      処理
+    // },
+    sayHello: function () {
+      this.text = "Hello";
+    },
+    showMsg: function () {
+      return "ボタンを押してね";
+    },
+    countUp: function (value) {
+      this.count += value;
+    },
   },
 };
 </script>
